@@ -1,0 +1,10 @@
+<!-- Folio: two panels unfolding (iPhone Duo reveal); the left panel turns toward you, the right holds the island. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
+    <path android:fillColor="#8CFFFFFF"
+        android:pathData="M35.2,39.2 L49.6,35.3 Q52,34.7 52,37.2 L52,70.8 Q52,73.3 49.6,72.7 L35.2,68.8 Q33,68.2 33,65.9 L33,42.1 Q33,39.8 35.2,39.2 Z" />
+    <path android:fillColor="#FFFFFFFF"
+        android:pathData="M59,34 h13 a3,3 0 0 1 3,3 v34 a3,3 0 0 1 -3,3 h-13 a3,3 0 0 1 -3,-3 v-34 a3,3 0 0 1 3,-3 z" />
+    <path android:fillColor="#FF56603F"
+        android:pathData="M62.5,38 h6 a1.5,1.5 0 0 1 0,3 h-6 a1.5,1.5 0 0 1 0,-3 z" />
+</vector>

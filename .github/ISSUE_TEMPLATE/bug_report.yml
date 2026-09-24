@@ -1,0 +1,75 @@
+name: Bug report
+description: Something in Duos isn't working right
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Help › **Report a Bug** in Duos fills in the phone details for you, and can copy diagnostics to paste below.
+        Before attaching screenshots or crash reports, check them for notifications, account names, contacts or work data.
+  - type: input
+    id: version
+    attributes:
+      label: Duos version
+      description: Settings › Help › What's New
+      placeholder: "0.4.0"
+    validations:
+      required: true
+  - type: input
+    id: phone
+    attributes:
+      label: Phone
+      placeholder: "Samsung Galaxy Z Fold8"
+    validations:
+      required: true
+  - type: input
+    id: android
+    attributes:
+      label: Android version
+      placeholder: "16 (API 36)"
+    validations:
+      required: true
+  - type: dropdown
+    id: screen
+    attributes:
+      label: Screen
+      options:
+        - Folded (cover screen)
+        - Unfolded
+        - Half folded
+        - Phone, tablet or other (not a foldable)
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Long press an empty spot on Home
+        2. Tap Add Widget
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead
+      description: Screenshots, a screen recording or a crash report (Settings › Help › Safe Mode & crash reports) help a lot.
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostics
+      description: |
+        In Duos, Settings › Help › Report a Bug › **Copy Diagnostics**, then paste here (or use Settings › Advanced › Share Diagnostics).
+        It has your phone and screen settings, recent Duos events and the app's own log. Check it before posting.
+      render: text
+    validations:
+      required: false

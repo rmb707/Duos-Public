@@ -1,0 +1,33 @@
+name: Feature or tweak idea
+description: Suggest something new for Duos
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: The idea
+      description: What should Duos do? If it's from iOS or a jailbreak tweak, say which one.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it helps
+      description: What would it make easier or better?
+    validations:
+      required: true
+  - type: dropdown
+    id: screens
+    attributes:
+      label: Where it matters
+      multiple: true
+      options:
+        - Cover screen
+        - Unfolded
+        - Half folded
+        - Phones and tablets
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: Screenshots, videos or links, if you have them.

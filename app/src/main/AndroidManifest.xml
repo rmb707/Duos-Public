@@ -1,0 +1,271 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.BIND_APPWIDGET" tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Only for Software Update (checking and downloading Folio from GitHub Releases, when you ask). -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <!-- Fold8Duo: Delete App in an app's menu opens Android's own uninstall confirmation (DeleteApp.kt). -->
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+    <!-- Unlock before listing hidden apps (Settings › Search & App Library). -->
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <!-- Lets a self-update skip the confirmation once Folio installed the current version itself (Android 12+). -->
+    <uses-permission android:name="android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION" />
+    <!-- Optional: update notifications (asked for only when turned on in Software Update). -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" tools:ignore="ProtectedPermissions" />
+    <queries>
+        <package android:name="com.google.android.googlequicksearchbox" />
+        <package android:name="com.google.android.apps.bard" />
+        <package android:name="ai.perplexity.app.android" />
+        <package android:name="com.anthropic.claude" />
+        <package android:name="com.openai.chatgpt" />
+        <!-- Good Lock's RegiStar, which can take over the side key (mentioned on the Side Key page). -->
+        <package android:name="com.samsung.android.app.galaxyregistry" />
+        <!-- Keyd, Folio's own keyboard, listed in the Market as an app of its own. A keyboard has no launcher
+             icon, so the MAIN/LAUNCHER query below never finds one, and Android would keep answering "not
+             installed" even for a copy Folio installed itself. Naming it is the only way to be told. -->
+        <package android:name="com.mccal.keyd" />
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.APP_CALENDAR" />
+        </intent>
+        <intent><action android:name="android.intent.action.SHOW_ALARMS" /></intent>
+        <intent><action android:name="org.adw.launcher.THEMES" /></intent>
+        <intent><action android:name="com.novalauncher.THEME" /></intent>
+        <intent><action android:name="com.teslacoilsw.launcher.THEME" /></intent>
+        <intent><action android:name="ch.deletescape.lawnchair.ICONPACK" /></intent>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="com.anddoes.launcher.THEME" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="com.fede.launcher.THEME_ICONPACK" />
+        </intent>
+    </queries>
+    <application android:label="${appLabel}" android:icon="@mipmap/ic_launcher"
+        android:name=".DuoApplication"
+        android:theme="@style/Theme.Duo" android:allowBackup="false" android:supportsRtl="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:enableOnBackInvokedCallback="true">
+        <property android:name="android.window.PROPERTY_ACTIVITY_EMBEDDING_SPLITS_ENABLED" android:value="true" />
+        <property android:name="android.window.PROPERTY_ACTIVITY_EMBEDDING_ALLOW_SYSTEM_OVERRIDE" android:value="false" />
+        <activity android:name=".DiscoverActivity" android:exported="false"
+            android:theme="@style/Theme.Duo.Discover"
+            android:taskAffinity="com.mccal.folio.discover" android:excludeFromRecents="true"
+            android:resizeableActivity="true" />
+        <activity android:name=".DiscoverFeedActivity" android:theme="@style/Theme.Duo.Discover" android:exported="false" android:resizeableActivity="true" />
+        <activity android:name=".LiveDiscoverActivity" android:theme="@style/Theme.Duo.LiveDiscover"
+            android:exported="false" android:resizeableActivity="true" />
+        <!-- Fold8Duo: lets the Shizuku app discover this package and hand it the shell user's binder (FoldShizuku.kt). -->
+        <provider android:name="rikka.shizuku.ShizukuProvider" android:authorities="${applicationId}.shizuku"
+            android:multiprocess="false" android:enabled="true" android:exported="true"
+            android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
+        <service android:name=".DuneWallpaperService" android:label="@string/label_dune_wallpaper"
+            android:permission="android.permission.BIND_WALLPAPER" android:exported="true">
+            <intent-filter><action android:name="android.service.wallpaper.WallpaperService" /></intent-filter>
+            <meta-data android:name="android.service.wallpaper" android:resource="@xml/dune_wallpaper" />
+        </service>
+        <activity android:name=".AssistPickerActivity" android:exported="true"
+            android:theme="@style/Theme.Folio.FoldBridge" android:excludeFromRecents="true"
+            android:taskAffinity="com.mccal.folio.assist" android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.ASSIST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".FoldBridgeActivity" android:exported="false"
+            android:theme="@style/Theme.Folio.FoldBridge"
+            android:taskAffinity="com.mccal.folio.foldbridge" android:excludeFromRecents="true"
+            android:noHistory="true" android:resizeableActivity="true"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|density" />
+        <service android:name=".IslandListenerService" android:label="@string/label_island_listener"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" android:exported="true">
+            <intent-filter><action android:name="android.service.notification.NotificationListenerService" /></intent-filter>
+        </service>
+        <service android:name=".SystemShadeAccessibilityService"
+            android:label="@string/shade_service_label"
+            android:description="@string/shade_service_description"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data android:name="android.accessibilityservice"
+                android:resource="@xml/system_shade_accessibility_service" />
+        </service>
+        <activity android:name=".MainActivity" android:exported="true"
+            android:launchMode="singleTask" android:resizeableActivity="true"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|density"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <!-- folio://package/<id> and folio://source/<url>: a shared link opens it in the Market. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="folio" android:host="package" />
+                <data android:scheme="folio" android:host="source" />
+                <data android:scheme="folio" android:host="early" />
+            </intent-filter>
+            <!-- Settings › Apps › Default apps › Home app (gear) and App info › Additional settings open Folio's settings. -->
+            <intent-filter>
+                <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- Folio as an app, like iOS Settings: its icon (in the App Library or another launcher) opens Folio's Settings. -->
+        <activity-alias android:name=".FolioSettingsApp" android:targetActivity=".MainActivity" android:exported="true"
+            android:label="${appLabel}" android:icon="@mipmap/ic_launcher">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <!-- The Soft alternate icon (Settings › Wallpaper & Appearance › App Icon); off until chosen. -->
+        <activity-alias android:name=".FolioSettingsAppSoft" android:targetActivity=".MainActivity" android:exported="true"
+            android:label="${appLabel}" android:icon="@mipmap/ic_launcher_soft" android:enabled="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <!-- A minimal voice interaction service so the side key's "Digital assistant" can open Folio's picker. -->
+        <service android:name=".FolioVoiceInteractionService" android:exported="true"
+            android:permission="android.permission.BIND_VOICE_INTERACTION">
+            <meta-data android:name="android.voice_interaction" android:resource="@xml/folio_voice_interaction" />
+            <intent-filter><action android:name="android.service.voice.VoiceInteractionService" /></intent-filter>
+        </service>
+        <service android:name=".FolioVoiceSessionService" android:exported="true"
+            android:permission="android.permission.BIND_VOICE_INTERACTION" />
+        <service android:name=".FolioRecognitionService" android:exported="true"
+            android:permission="android.permission.BIND_VOICE_INTERACTION">
+            <intent-filter><action android:name="android.speech.RecognitionService" /></intent-filter>
+        </service>
+        <activity-alias android:name=".FolioSettingsAppOlive" android:targetActivity=".MainActivity" android:exported="true"
+            android:label="${appLabel}" android:icon="@mipmap/ic_launcher_olive" android:enabled="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <receiver android:name=".FocusScheduleReceiver" android:exported="false" />
+        <receiver android:name=".SoftwareUpdateReceiver" android:exported="false" />
+        <!-- Android's answer when the Market hands it an app to install. Never exported: only the
+             installer session Folio created can reach it. -->
+        <receiver android:name=".MarketInstallReceiver" android:exported="false" />
+        <service android:name=".SoftwareUpdateJob" android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <!-- Share a theme file to Folio: it's validated here, then Home asks before applying it. SEND only, so Folio
+             doesn't show up under "Open with" for every JSON file. -->
+        <activity android:name=".ThemeImportActivity" android:exported="true" android:excludeFromRecents="true"
+            android:theme="@style/Theme.Folio.FoldBridge" android:taskAffinity="com.mccal.folio.theme" android:noHistory="true"
+            android:label="@string/label_theme_import">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/json" />
+            </intent-filter>
+        </activity>
+        <!-- A .foliopkg file opened or shared with Folio. It's unsigned, so the Market says so before anything runs. -->
+        <activity android:name=".PackageImportActivity" android:exported="true" android:excludeFromRecents="true"
+            android:theme="@style/Theme.Folio.FoldBridge" android:taskAffinity="com.mccal.folio.package"
+            android:noHistory="true" android:label="@string/label_package_import">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="content" android:mimeType="application/octet-stream" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/octet-stream" />
+            </intent-filter>
+        </activity>
+        <service android:name=".MarketRefreshJob" android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <!-- folio://redeem?c=… from a supporter email: the code is checked on the phone, so a bad link is simply refused. -->
+        <activity android:name=".RedeemActivity" android:exported="true" android:excludeFromRecents="true"
+            android:theme="@style/Theme.Folio.FoldBridge" android:taskAffinity="com.mccal.folio.redeem" android:noHistory="true"
+            android:label="@string/label_redeem">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="folio" android:host="redeem" />
+            </intent-filter>
+        </activity>
+        <!-- "Add to Home Screen" for widgets an app asks to pin (only delivered to the default Home app). -->
+        <activity android:name=".PinWidgetActivity" android:exported="true" android:excludeFromRecents="true"
+            android:theme="@style/Theme.Folio.FoldBridge" android:taskAffinity="com.mccal.folio.pin" android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.content.pm.action.CONFIRM_PIN_APPWIDGET" />
+                <action android:name="android.content.pm.action.CONFIRM_PIN_SHORTCUT" />
+            </intent-filter>
+        </activity>
+        <!-- Opens Folio's settings from Android's screens (Accessibility gear, tile long-press, wallpaper settings). -->
+        <activity android:name=".FolioSettingsActivity" android:exported="true" android:excludeFromRecents="true"
+            android:noHistory="true" android:theme="@style/Theme.Folio.FoldBridge" android:label="@string/label_settings_shortcut">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
+            </intent-filter>
+        </activity>
+        <!-- Quick Settings tiles -->
+        <service android:name=".SpotlightTileService" android:exported="true" android:label="@string/spotlight"
+            android:icon="@drawable/ic_tile_search" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter><action android:name="android.service.quicksettings.action.QS_TILE" /></intent-filter>
+        </service>
+        <service android:name=".IslandTileService" android:exported="true" android:label="@string/island"
+            android:icon="@drawable/ic_tile_island" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter><action android:name="android.service.quicksettings.action.QS_TILE" /></intent-filter>
+            <meta-data android:name="android.service.quicksettings.TOGGLEABLE_TILE" android:value="true" />
+        </service>
+        <service android:name=".DockTileService" android:exported="true" android:label="@string/label_dock_tile"
+            android:icon="@drawable/ic_tile_dock" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter><action android:name="android.service.quicksettings.action.QS_TILE" /></intent-filter>
+            <meta-data android:name="android.service.quicksettings.TOGGLEABLE_TILE" android:value="true" />
+        </service>
+        <service android:name=".StandByTileService" android:exported="true" android:label="@string/standby"
+            android:icon="@drawable/ic_tile_standby" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter><action android:name="android.service.quicksettings.action.QS_TILE" /></intent-filter>
+            <meta-data android:name="android.service.quicksettings.TOGGLEABLE_TILE" android:value="true" />
+        </service>
+
+        <!-- How much room Big Buttons take at the bottom, so a keyboard can stay clear of them. One number, no
+             permission: Android tells no app about another app's overlay, and asking for a permission to avoid
+             covering a button would be the worse trade. The authority carries the application id, so a debug build
+             and a release build can sit side by side. -->
+        <provider
+            android:name=".ButtonsRoomProvider"
+            android:authorities="${applicationId}.buttons"
+            android:exported="true"
+            android:grantUriPermissions="false" />
+        <!-- A bug report is written to a file and handed to the share sheet through this, so an email app can attach
+             it. Not exported: an app reaches a report only when Folio gives it one, and only that one file. -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.reports"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/report_paths" />
+        </provider>
+
+    </application>
+</manifest>

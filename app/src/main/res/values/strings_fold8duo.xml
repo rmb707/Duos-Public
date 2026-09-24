@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fold8Duo's own words, kept out of upstream's strings.xml so its additions never collide with ours. English only. -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!-- App Library A–Z list (LibraryList.kt) -->
+    <string name="library_index">App Library index</string>
+    <string name="library_jump_to">Jump to %1$s</string>
+    <string name="library_show_list">Show as a list</string>
+    <string name="library_show_categories">Show categories</string>
+
+    <!-- Settings › Fold & Displays (FoldShizuku.kt) -->
+    <string name="fold8_notice_hinge_offline">Real hinge is offline: Shizuku stopped</string>
+    <string name="fold8_real_hinge_title">Real hinge (Shizuku)</string>
+    <string name="fold8_follow_real_hinge">Follow the real hinge</string>
+    <string name="fold8_hinge_off">Off. The fold effect runs on its learned timings.</string>
+    <string name="fold8_hinge_not_running">Shizuku isn\'t running. Install it and start it (it has to be started again after every reboot), then come back here.</string>
+    <string name="fold8_hinge_needs_permission">Shizuku is running. Allow Duos to use it.</string>
+    <string name="fold8_hinge_connecting">Starting the fold engine…</string>
+    <string name="fold8_hinge_connected">Connected. The fold effect follows the hinge\'s true angle, and the screens change early. %1$s</string>
+    <string name="fold8_allow_in_shizuku">Allow in Shizuku</string>
+    <string name="fold8_light_early">Light the screens early</string>
+    <string name="fold8_light_early_note">Inner screen as the phone starts to open (One UI waits for about 92°), front screen while it is still closing (One UI waits for about 5°). Left to One UI while a camera is in front or a phone call is up.</string>
+    <string name="fold8_over_apps_title">Fold effect in other apps</string>
+    <string name="fold8_over_apps">Play over other apps</string>
+    <string name="fold8_over_apps_note">The same effect as on Home, drawn over whatever app is open, the lock screen included. Needs \"Duos gestures &amp; overlays\" switched on in Android\'s Accessibility settings: that service is what may draw above other apps. Touches always pass through it.</string>
+    <string name="fold8_live_frost">Frost what\'s underneath</string>
+    <string name="fold8_live_frost_note">The soft edge ahead of the dark blurs the app underneath, from a private copy of the screen that never leaves the phone\'s graphics memory. Protected screens (banking, films) show dark instead.</string>
+    <string name="fold8_live_frost_needs_hinge">Needs the real hinge above to be connected. Until then the dark edge crosses without the blur ahead of it.</string>
+    <string name="fold8_smooth_title">Fold effect on Home</string>
+    <string name="fold8_smooth_switch">Smoother fold (half resolution)</string>
+    <string name="fold8_smooth_note">Draws the frosted and dark part of the effect at half resolution over the sharp screen: a quarter of the work, so fewer dropped frames. What is clear stays full resolution. Compare a few folds each way.</string>
+    <!-- Settings › Fold & Displays › Fold animation: which animation plays (duo/DuoFold.kt) -->
+    <string name="fold8_style_sweep">Fold8Duo sweep</string>
+    <string name="fold8_style_duo">iPhone Duo</string>
+    <string name="fold8_style_sweep_note">One soft dark front crosses the whole screen: right to left on the front screen as the phone opens, again across the inner screen, so the panels always change under dark.</string>
+    <string name="fold8_style_duo_note">Apple\'s way, following the real hinge: the picture stays where it is, and the half that moves shows it in perspective, blurred and darker the further it is from flat, coming into focus as the phone opens. The front screen does the same toward its free edge, and a still of it carries across to the inner screen. Best with the real hinge connected; over other apps it needs \"Frost what\'s underneath\" for the pictures.</string>
+    <string name="fold8_open_close_title">Opening and closing apps</string>
+    <string name="fold8_icon_morph">Apps fly back into their icons</string>
+    <string name="fold8_icon_morph_note">Swiping home lands the app in its icon, and opening one grows evenly while Home zooms toward it.</string>
+    <string name="fold8_open_morph">Apps grow out of their icons (new)</string>
+    <string name="fold8_open_morph_note">A rounded card grows from the icon to the whole screen, showing the app as you last left it when the real hinge is connected. New and not yet tuned by eye: switch it off if a launch ever looks wrong.</string>
+    <!-- Settings › Fold & Displays › Apps on the inner screen, and the app's long-press panel (duo/AppDisplay.kt, WP-58) -->
+    <string name="fold8_fill_title">Apps on the inner screen</string>
+    <string name="fold8_fill_default">Apps fill the inner screen</string>
+    <string name="fold8_fill_default_note">Every app you installed follows the phone\'s rotation and fills the 4:3 inner screen, as Samsung\'s per-app Full screen setting does, instead of sitting in a box. An app restarts as its setting changes, so music that is playing stops for a moment. Turn it off for one app from its long-press panel; Samsung\'s own apps are left as they are.</string>
+    <string name="fold8_fill_needs_hinge">Needs the real hinge (Shizuku) above to be connected: that is what may change an app\'s screen setting.</string>
+    <string name="fold8_app_fill_on">Fill the inner screen</string>
+    <string name="fold8_app_fill_off">Stop filling the inner screen</string>
+    <string name="fold8_app_aspect_ratio">Aspect ratio…</string>
+    <!-- The assistant (Claude or Gemini) where iOS has Siri (duo/Gemini.kt, WP-70/71); %1$s is its name -->
+    <string name="fold8_assistant_ask">Ask %1$s</string>
+    <string name="fold8_assistant_type">Type to %1$s</string>
+    <string name="fold8_assistant_listen">Talk to %1$s</string>
+</resources>

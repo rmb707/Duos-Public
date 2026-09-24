@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Only the one folder a bug report is written to: nothing else in Folio's storage can be handed out through it. -->
+<paths>
+    <cache-path name="reports" path="reports/" />
+</paths>
