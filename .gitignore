@@ -1,0 +1,27 @@
+.gradle/
+.kotlin/
+**/build/
+local.properties
+.idea/
+*.iml
+.DS_Store
+__pycache__/
+artifacts/
+dist/
+discover-probe/
+.env
+.env.*
+*.jks
+*.keystore
+*.p12
+*.pem
+*.key
+pool.sql
+**/pool.sql
+tools/kofi-worker/.wrangler/
+tools/kofi-worker/node_modules/
+supporter-key.pem
+supporter-codes*.txt
+
+# Jazzer's generated corpus (seeds live in market/src/test/resources)
+.cifuzz-corpus/

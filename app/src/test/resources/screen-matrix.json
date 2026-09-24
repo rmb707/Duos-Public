@@ -1,0 +1,216 @@
+{
+  "note": "Real screen sizes in dp (Android Studio device definitions: pixels x 160 / density; Galaxy Z Fold8 measured with adb). fold and cutout are approximate and only used by the Mockup Lab's posture and safe-area overlays.",
+  "devices": [
+    {
+      "name": "Small Phone (Android Studio)",
+      "width": 360,
+      "height": 640,
+      "group": "phone",
+      "cutout": {
+        "x": 180.0,
+        "y": 14,
+        "r": 9
+      }
+    },
+    {
+      "name": "Nexus 4",
+      "width": 384,
+      "height": 640,
+      "group": "phone",
+      "cutout": {
+        "x": 192.0,
+        "y": 14,
+        "r": 9
+      }
+    },
+    {
+      "name": "Pixel 5",
+      "width": 393,
+      "height": 851,
+      "group": "phone",
+      "cutout": {
+        "x": 196.5,
+        "y": 14,
+        "r": 9
+      }
+    },
+    {
+      "name": "Medium Phone / Pixel 9",
+      "width": 411,
+      "height": 923,
+      "group": "phone",
+      "cutout": {
+        "x": 205.5,
+        "y": 14,
+        "r": 9
+      }
+    },
+    {
+      "name": "Pixel 9 Pro",
+      "width": 427,
+      "height": 952,
+      "group": "phone",
+      "cutout": {
+        "x": 213.5,
+        "y": 14,
+        "r": 9
+      }
+    },
+    {
+      "name": "Pixel 9 Pro XL",
+      "width": 448,
+      "height": 997,
+      "group": "phone",
+      "cutout": {
+        "x": 224.0,
+        "y": 14,
+        "r": 9
+      }
+    },
+    {
+      "name": "6.7\" Horizontal Fold-in (flip, open)",
+      "width": 360,
+      "height": 879,
+      "group": "foldable",
+      "fold": "horizontal",
+      "cutout": {
+        "x": 180,
+        "y": 14,
+        "r": 9
+      }
+    },
+    {
+      "name": "7.4\" Rollable",
+      "width": 610,
+      "height": 925,
+      "group": "foldable"
+    },
+    {
+      "name": "Galaxy Z Fold8 cover",
+      "width": 475,
+      "height": 751,
+      "group": "foldable",
+      "cutout": {
+        "x": 237.5,
+        "y": 14,
+        "r": 10
+      }
+    },
+    {
+      "name": "Galaxy Z Fold8 inner",
+      "width": 932,
+      "height": 704,
+      "group": "foldable",
+      "fold": "vertical",
+      "cutout": {
+        "x": 884,
+        "y": 22,
+        "r": 12
+      }
+    },
+    {
+      "name": "Galaxy Z TriFold main (estimated)",
+      "width": 823,
+      "height": 603,
+      "group": "foldable",
+      "fold": "vertical",
+      "note": "Pixels from Samsung's specs (via GSMArena) at an assumed 420 dpi like the Fold8; no measured density is published yet, so this is an estimate, the main screen most of all."
+    },
+    {
+      "name": "Galaxy Z TriFold cover (estimated)",
+      "width": 411,
+      "height": 960,
+      "group": "foldable",
+      "note": "Estimated at 420 dpi; see the TriFold main screen."
+    },
+    {
+      "name": "Galaxy Z Fold8 Ultra inner (estimated)",
+      "width": 859,
+      "height": 954,
+      "group": "foldable",
+      "fold": "vertical",
+      "note": "Estimated at 420 dpi; see the TriFold main screen."
+    },
+    {
+      "name": "Galaxy Z Fold8 Ultra cover (estimated)",
+      "width": 411,
+      "height": 960,
+      "group": "foldable",
+      "note": "Estimated at 420 dpi; see the TriFold main screen."
+    },
+    {
+      "name": "Pixel Fold inner",
+      "width": 841,
+      "height": 701,
+      "group": "foldable",
+      "fold": "vertical"
+    },
+    {
+      "name": "Pixel 9 Pro Fold inner",
+      "width": 852,
+      "height": 883,
+      "group": "foldable",
+      "fold": "vertical",
+      "cutout": {
+        "x": 806,
+        "y": 22,
+        "r": 11
+      }
+    },
+    {
+      "name": "8\" Fold-out",
+      "width": 838,
+      "height": 945,
+      "group": "foldable",
+      "fold": "vertical"
+    },
+    {
+      "name": "7\" WSVGA tablet",
+      "width": 1024,
+      "height": 600,
+      "group": "tablet"
+    },
+    {
+      "name": "Nexus 7",
+      "width": 600,
+      "height": 960,
+      "group": "tablet"
+    },
+    {
+      "name": "Nexus 9",
+      "width": 1024,
+      "height": 768,
+      "group": "tablet"
+    },
+    {
+      "name": "Medium Tablet / Pixel Tablet",
+      "width": 1280,
+      "height": 800,
+      "group": "tablet"
+    },
+    {
+      "name": "Pixel C",
+      "width": 1280,
+      "height": 900,
+      "group": "tablet"
+    },
+    {
+      "name": "Small Desktop",
+      "width": 1366,
+      "height": 768,
+      "group": "desktop"
+    },
+    {
+      "name": "13.5\" Freeform",
+      "width": 1707,
+      "height": 960,
+      "group": "desktop"
+    },
+    {
+      "name": "Large Desktop",
+      "width": 1920,
+      "height": 1080,
+      "group": "desktop"
+    }
+  ]
+}

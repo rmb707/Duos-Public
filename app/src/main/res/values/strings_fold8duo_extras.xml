@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fold8Duo's own words, kept out of upstream's strings.xml so its additions never collide with ours. English only. -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!-- App Library: the section above the A–Z list and the tile after Suggestions (LibraryList.kt, RecentlyAdded.kt) -->
+    <string name="fold8_recently_added">Recently Added</string>
+
+    <!-- An app's long-press menu (DeleteApp.kt) -->
+    <string name="fold8_delete_app">Delete App</string>
+    <string name="fold8_delete_app_failed">Android\'s uninstall screen didn\'t open for %1$s.</string>
+
+    <!-- Settings › Icons & Side Bar › App Icons, with the badge options (BadgesOnOpen.kt) -->
+    <string name="fold8_clear_badges_on_open">Clear badges when opened</string>
+</resources>

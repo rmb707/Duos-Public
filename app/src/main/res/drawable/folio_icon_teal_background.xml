@@ -1,0 +1,17 @@
+<!-- Duos: the default icon's background. Indigo, lit from the top left. Used by the launcher icon (through
+     ic_launcher_background) and by the app's own screens (AppIconChoice.TEAL), so both show the same artwork. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
+    <path android:pathData="M0,0h108v108h-108z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:startX="0" android:startY="0" android:endX="108" android:endY="108"
+                android:startColor="#FF7472F5" android:endColor="#FF1F1D66" />
+        </aapt:attr>
+    </path>
+    <path android:pathData="M0,0h108v108h-108z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="radial" android:centerX="38" android:centerY="22" android:gradientRadius="72"
+                android:startColor="#4DFFFFFF" android:endColor="#00FFFFFF" />
+        </aapt:attr>
+    </path>
+</vector>

@@ -1,0 +1,33 @@
+package com.mccal.folio
+
+import org.junit.Assert.assertTrue
+import org.junit.Test
+
+class SuggestionsTest {
+    private val hour = 60 * 60 * 1000L
+    private val day = 24 * hour
+
+    @Test fun `apps used around this time of day rank above apps used at other times`() {
+        val now = 30 * day + 8 * hour // 8 AM (UTC for the test)
+        // Mail opened most mornings; games opened more often, but in the evening.
+        val uses = (1..10).map { "mail" to now - it * day } + (1..14).map { "game" to now - it * day + 12 * hour }
+        val scores = Suggestions.scores(uses, now, zoneOffsetMs = 0)
+        assertTrue(scores.getValue("mail") > scores.getValue("game"))
+    }
+
+    @Test fun `recent habits outweigh old ones and the curve wraps past midnight`() {
+        val now = 60 * day + 23 * hour + 30 * 60 * 1000L // 11:30 PM
+        val recentNight = listOf("reader" to now - day + hour) // 12:30 AM yesterday: an hour away across midnight
+        val oldNight = List(3) { "old" to now - 50 * day }
+        val scores = Suggestions.scores(recentNight + oldNight, now, zoneOffsetMs = 0)
+        assertTrue(scores.getValue("reader") > .5)
+        assertTrue(scores.getValue("reader") > scores.getValue("old"))
+    }
+
+    @Test fun `smart rotate only moves to a clearly more relevant card`() {
+        org.junit.Assert.assertEquals(2, Suggestions.smartStackPick(listOf(.1, .2, 1.0), 0))
+        org.junit.Assert.assertNull(Suggestions.smartStackPick(listOf(.8, 1.0), 0)) // not half again as relevant
+        org.junit.Assert.assertNull(Suggestions.smartStackPick(listOf(0.0, .2), 0)) // below the floor
+        org.junit.Assert.assertNull(Suggestions.smartStackPick(listOf(.1, .9), 1)) // already showing the best
+    }
+}

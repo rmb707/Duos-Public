@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The launcher icon's background. Folio Dev swaps this one (src/dev/res) so the builds are easy to tell apart;
+     Folio's own screens draw folio_icon_teal_background so they always show the real icon. -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android" android:drawable="@drawable/folio_icon_teal_background" />

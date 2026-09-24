@@ -1,0 +1,29 @@
+name: Translation / correction
+description: Fix a word or phrase in a translation, or offer to review or add a language.
+labels: ["translation"]
+body:
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      options:
+        - Simplified Chinese (简体中文)
+        - A language Duos doesn't have yet
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Where is it?
+      description: The screen, or the setting's name. A screenshot helps.
+  - type: textarea
+    id: now
+    attributes:
+      label: What it says now
+  - type: textarea
+    id: better
+    attributes:
+      label: What it should say
+      description: And why, if it isn't obvious. "It reads like a machine wrote it" is a good reason.
+    validations:
+      required: true

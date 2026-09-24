@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fold8Duo's own words, kept out of upstream's strings.xml so its additions never collide with ours. English only. -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!-- Edit Pages (EditPages.kt): jiggle mode › page dots, or Edit › Edit Pages -->
+    <string name="edit_pages">Edit Pages</string>
+    <string name="edit_pages_hint">Hold a page to move it. Uncheck a page to hide it: its apps stay in the App Library.</string>
+    <string name="edit_pages_page_shown">Page %1$d, on Home</string>
+    <string name="edit_pages_page_hidden">Page %1$d, hidden</string>
+    <string name="edit_pages_page_empty">Page %1$d, empty</string>
+    <string name="edit_pages_show_page">Show page %1$d on Home</string>
+    <string name="edit_pages_hide_page">Hide page %1$d</string>
+    <string name="edit_pages_remove_page">Remove page %1$d</string>
+    <string name="edit_pages_move_earlier">Move earlier</string>
+    <string name="edit_pages_move_later">Move later</string>
+    <string name="edit_pages_last_page">Home keeps at least one page.</string>
+    <string name="edit_pages_remove_title">Remove This Page?</string>
+    <plurals name="edit_pages_remove_apps">
+        <item quantity="one">Its app comes off Home and stays in the App Library.</item>
+        <item quantity="other">Its %1$d apps come off Home and stay in the App Library.</item>
+    </plurals>
+    <plurals name="edit_pages_remove_widgets">
+        <item quantity="one">Its widget is removed.</item>
+        <item quantity="other">Its %1$d widgets are removed.</item>
+    </plurals>
+    <plurals name="edit_pages_remove_folders">
+        <item quantity="one">Its folder moves to another page, with its apps.</item>
+        <item quantity="other">Its %1$d folders move to another page, with their apps.</item>
+    </plurals>
+    <string name="edit_pages_remove_undo">Until Home changes again, Undo last layout change in Settings brings it all back.</string>
+    <string name="edit_pages_remove_confirm">Remove Page</string>
+    <!-- Layout History: the snapshot saved before a page edit -->
+    <string name="edit_pages_history">Before editing pages</string>
+    <!-- When Done can't be applied -->
+    <string name="edit_pages_refused_stale">Home changed while pages were being edited, so nothing was changed. Try again.</string>
+    <string name="edit_pages_refused_old_widget">A widget kept from an older version of Duos can\'t change pages, so the pages stayed in order.</string>
+    <string name="edit_pages_refused_locked">Home can\'t be edited right now, so the pages stayed as they were.</string>
+    <string name="edit_pages_refused_not_empty">Only empty or hidden pages can be removed.</string>
+</resources>

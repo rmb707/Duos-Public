@@ -1,0 +1,11 @@
+<!-- Folio "Soft" alternate icon: three rounded pages stacked into an F, in soft whites on mint and teal. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
+    <!-- A stroke in the same color with round joins softens every corner. -->
+    <path android:fillColor="#FFD8F0EB" android:strokeColor="#FFD8F0EB" android:strokeWidth="7" android:strokeLineJoin="round"
+        android:pathData="M38,45 L59,37 L59,69 L38,77 Z" />
+    <path android:fillColor="#FFEEF8F5" android:strokeColor="#FFEEF8F5" android:strokeWidth="7" android:strokeLineJoin="round"
+        android:pathData="M46,51 L70,43 L70,49 L46,57 Z" />
+    <path android:fillColor="#FFFFFFFF" android:strokeColor="#FFFFFFFF" android:strokeWidth="7" android:strokeLineJoin="round"
+        android:pathData="M46,64 L67,62 L46,75 Z" />
+</vector>

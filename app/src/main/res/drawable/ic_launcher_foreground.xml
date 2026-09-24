@@ -1,0 +1,19 @@
+<!-- Duos: a D made of the phone's two halves. The left half is folding (translucent), the right one is lit, and a
+     little light shows through the hinge between them. Optically centred; inside the 66dp safe circle. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
+    <path android:pathData="M0,0h108v108h-108z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="radial" android:centerX="45" android:centerY="54" android:gradientRadius="26"
+                android:startColor="#B3B9CCFF" android:endColor="#00B9CCFF" />
+        </aapt:attr>
+    </path>
+    <path android:fillColor="#9EFFFFFF"
+        android:pathData="M36,31 h2 a5,5 0 0 1 5,5 v36 a5,5 0 0 1 -5,5 h-2 a5,5 0 0 1 -5,-5 v-36 a5,5 0 0 1 5,-5 z" />
+    <path android:pathData="M50,31 H52 A23,23 0 0 1 52,77 H50 A3,3 0 0 1 47,74 V34 A3,3 0 0 1 50,31 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:startX="0" android:startY="31" android:endX="0" android:endY="77"
+                android:startColor="#FFFFFFFF" android:endColor="#FFE6E5FF" />
+        </aapt:attr>
+    </path>
+</vector>

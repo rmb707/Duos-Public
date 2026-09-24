@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fold8Duo's own words, kept out of upstream's strings.xml so its additions never collide with ours. English only. -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!-- Settings › Gestures & Actions: Swipe Up on Home (HomeSwipeUp.kt). "App Library" and "Nothing" are upstream's. -->
+    <string name="fold8_swipe_up_on_home">Swipe Up on Home</string>
+    <string name="fold8_app_library_with_keyboard">App Library with keyboard</string>
+
+    <!-- Settings search (CustomizationSheet.kt's index) -->
+    <string name="fold8_settings_swipe_up_on_home">Swipe up on Home</string>
+    <string name="fold8_settings_keywords_swipe_up_on_home">swipe up home app library all apps list drawer keyboard search one finger</string>
+</resources>

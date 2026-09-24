@@ -1,0 +1,31 @@
+<resources>
+    <style name="Theme.Duo" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">#567587</item>
+        <item name="android:colorAccent">#30596D</item>
+    </style>
+    <!-- Launcher-standard wallpaper theme: the system wallpaper shows through a translucent window. -->
+    <style name="Theme.Duo.Wallpaper" parent="Theme.Duo">
+        <item name="android:windowShowWallpaper">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+    </style>
+    <style name="Theme.Folio.FoldBridge" parent="android:style/Theme.Translucent.NoTitleBar">
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">always</item>
+    </style>
+    <style name="Theme.Duo.Discover" parent="Theme.Duo">
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+    <style name="Theme.Duo.LiveDiscover" parent="Theme.Duo.Discover">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
+</resources>
